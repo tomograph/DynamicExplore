@@ -4,7 +4,8 @@ from IPython.display import display
 import matplotlib.pyplot as plt
 from IPython.display import clear_output
 #%config InlineBackend.close_figures=False 
-
+                
+               
 
 #Define class for slicing a 3D volume
 class ImageSliceViewer3D:
@@ -23,12 +24,14 @@ class ImageSliceViewer3D:
     https://matplotlib.org/users/colormaps.html
     
     """
+        
     def plot_slice(self, change):
         self.ax.clear()
-        self.ax.imshow(self.volume[change['new'],:,:])
+        self.ax.imshow(self.volume[change['new'],:,:], cmap="gray")
         with self.out:
             clear_output(wait=True)
             display(self.ax.figure)
+
 
     
     def __init__(self, volume):
@@ -45,6 +48,7 @@ class ImageSliceViewer3D:
         vbox=widgets.VBox(children=(self.out,button))
         display(vbox)
         button.observe(self.plot_slice, names='value')
+        self.plot_slice({'new':0})
         
         
 
