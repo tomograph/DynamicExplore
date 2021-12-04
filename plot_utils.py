@@ -139,10 +139,10 @@ def get_mask(data, t):
 def plot_results(recon, ground_truth, titles, t_recon, t_gt):
     fig = plt.figure(constrained_layout=True)
     subfigs = fig.subfigures(4, 1,hspace=2, wspace=0.7)
-    axsRecon = subfigs[0].subplots(1, 4)
-    axsReconMask = subfigs[1].subplots(1, 4)
-    axsGTMask = subfigs[2].subplots(1, 4)
-    axsDiffMasks = subfigs[3].subplots(1, 4)
+    axsRecon = subfigs[0].subplots(1, len(titles))
+    axsReconMask = subfigs[1].subplots(1, len(titles))
+    axsGTMask = subfigs[2].subplots(1, len(titles))
+    axsDiffMasks = subfigs[3].subplots(1, len(titles))
 
     subfigs[0].set_facecolor('0.75')
     subfigs[1].set_facecolor('0.75')
